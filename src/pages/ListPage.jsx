@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import HouseCard from "../components/HouseCard";
 
+import { houses } from "../data/houses";
+
 const ListPage = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -21,21 +23,6 @@ const ListPage = () => {
     navigate(`/list?q=${inputValue}`);
   };
 
-  const mockData = [
-    {
-      id: 1,
-      location: "영주시 풍기읍",
-      area: 85,
-      reason: "유동인구가 많아 상업용에 적합",
-    },
-    {
-      id: 2,
-      location: "영주시 이산면",
-      area: 120,
-      reason: "조용한 환경으로 휴식에 적합",
-    },
-  ];
-
   return (
     <div className="ListPage">
       <h1>ListPage</h1>
@@ -52,7 +39,7 @@ const ListPage = () => {
       </div>
 
       <div>
-        {mockData.map((item) => (
+        {houses.map((item) => (
           <HouseCard
             key={item.id}
             item={item}

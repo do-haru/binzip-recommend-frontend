@@ -1,9 +1,9 @@
 import "./App.css";
+import SearchPage from "./pages/SearchPage";
 import ListPage from "./pages/ListPage";
 
-import SearchPage from "./pages/SearchPage";
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import DetailPage from "./pages/DetailPage";
 
 function App() {
   return (
@@ -11,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<SearchPage />} />
         <Route path="/list" element={<ListPage />} />
+        <Route path="/detail/:id" element={<DetailPage />} />
       </Routes>
     </BrowserRouter>
   );
