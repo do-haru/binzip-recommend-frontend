@@ -1,4 +1,5 @@
 import "./App.css";
+import ListPage from "./pages/ListPage";
 
 import SearchPage from "./pages/SearchPage";
 
@@ -9,6 +10,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<SearchPage />} />
+        <Route path="/list" element={<ListPage />} />
       </Routes>
     </BrowserRouter>
   );
