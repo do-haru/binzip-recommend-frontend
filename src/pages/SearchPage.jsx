@@ -8,8 +8,11 @@ const SearchPage = () => {
   const navigate = useNavigate();
 
   const handleSearch = () => {
-    if (!query.trim()) return;
-    navigate(`/list?q=${query}`);
+    if (!query.trim()) {
+      alert("검색어를 입력하세요");
+      return;
+    }
+    navigate(`/list?q=${encodeURIComponent(query)}`);
   };
 
   return (
