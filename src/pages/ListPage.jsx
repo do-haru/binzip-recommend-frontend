@@ -20,7 +20,7 @@ const ListPage = () => {
 
   const handleSearch = () => {
     if (!inputValue.trim()) return;
-    navigate(`/list?q=${inputValue}`);
+    navigate(`/list?q=${encodeURIComponent(inputValue)}`);
   };
 
   return (
