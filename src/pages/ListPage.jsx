@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import HouseCard from "../components/HouseCard";
 
-import { houses } from "../data/houses";
-
 const ListPage = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -13,6 +11,8 @@ const ListPage = () => {
   const query = searchParams.get("q") || "";
 
   const [inputValue, setInputValue] = useState(query);
+
+  const [houses, setHouses] = useState([]);
 
   useEffect(() => {
     setInputValue(query);
@@ -22,6 +22,18 @@ const ListPage = () => {
     if (!inputValue.trim()) return;
     navigate(`/list?q=${encodeURIComponent(inputValue)}`);
   };
+
+  // 추천 결과 데이터 api 호출
+  useEffect(() => {
+    fetch("http://localhost:8080/api/houses/recommend-dto")
+      .then((res) => res.json())
+      .then((data) => {
+        setHouses(data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
 
   return (
     <div className="ListPage">
