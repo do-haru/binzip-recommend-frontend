@@ -33,7 +33,9 @@ const ListPage = () => {
 
   // 추천 결과 데이터 api 호출
   useEffect(() => {
-    fetch("http://localhost:8080/api/houses/recommend-dto")
+    fetch(
+      `http://localhost:8080/api/houses/test1?regionName=${region}&query=${inputValue}`,
+    )
       .then((res) => res.json())
       .then((data) => {
         setHouses(data);
