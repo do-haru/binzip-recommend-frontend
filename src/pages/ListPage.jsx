@@ -1,5 +1,7 @@
 import "./ListPage.css";
 
+import { regions } from "../data/regions";
+
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import HouseCard from "../components/HouseCard";
@@ -9,18 +11,24 @@ const ListPage = () => {
   const navigate = useNavigate();
 
   const query = searchParams.get("q") || "";
+  const regionParam = searchParams.get("region") || "";
 
+  const [region, setRegion] = useState(regionParam);
   const [inputValue, setInputValue] = useState(query);
 
   const [houses, setHouses] = useState([]);
 
   useEffect(() => {
     setInputValue(query);
-  }, [query]);
+    setRegion(regionParam);
+  }, [query, regionParam]);
 
   const handleSearch = () => {
     if (!inputValue.trim()) return;
-    navigate(`/list?q=${encodeURIComponent(inputValue)}`);
+    if (!region) return;
+    navigate(
+      `/list?q=${encodeURIComponent(query)}&region=${encodeURIComponent(region)}`,
+    );
   };
 
   // 추천 결과 데이터 api 호출
@@ -33,12 +41,21 @@ const ListPage = () => {
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+  }, [region, inputValue]);
 
   return (
     <div className="ListPage">
       <h1>ListPage</h1>
       <div>
+        <select value={region} onChange={(e) => setRegion(e.target.value)}>
+          <option value="">지역 선택</option>
+
+          {regions.map((r) => (
+            <option key={r} value={r}>
+              {r}
+            </option>
+          ))}
+        </select>
         <input
           type="text"
           value={inputValue}
