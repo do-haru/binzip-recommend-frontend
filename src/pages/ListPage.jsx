@@ -23,27 +23,26 @@ const ListPage = () => {
     setRegion(regionParam);
   }, [query, regionParam]);
 
+  const fetchHouses = (region, query) => {
+    fetch(
+      `http://localhost:8080/api/houses/test1?regionName=${region}&query=${query}`,
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setHouses(data);
+      })
+      .catch(console.error);
+  };
+
   const handleSearch = () => {
     if (!inputValue.trim()) return;
     if (!region) return;
     navigate(
       `/list?q=${encodeURIComponent(query)}&region=${encodeURIComponent(region)}`,
     );
-  };
 
-  // 추천 결과 데이터 api 호출
-  useEffect(() => {
-    fetch(
-      `http://localhost:8080/api/houses/test1?regionName=${region}&query=${inputValue}`,
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setHouses(data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, [region, inputValue]);
+    fetchHouses(region, inputValue);
+  };
 
   return (
     <div className="ListPage">
