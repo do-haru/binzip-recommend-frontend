@@ -28,30 +28,39 @@ const SearchPage = () => {
 
   return (
     <div className="SearchPage">
-      <h1>Searchpage</h1>
+      <div className="SearchContainer">
+        <h1 className="Title">빈집 추천 검색</h1>
 
-      {/* 🔥 지역 선택 */}
-      <select value={region} onChange={(e) => setRegion(e.target.value)}>
-        <option value="">지역 선택</option>
+        {/* 🔥 지역 선택 */}
+        <select
+          className="Select"
+          value={region}
+          onChange={(e) => setRegion(e.target.value)}
+        >
+          <option value="">지역 선택</option>
 
-        {regions.map((r) => (
-          <option key={r} value={r}>
-            {r}
-          </option>
-        ))}
-      </select>
+          {regions.map((r) => (
+            <option key={r} value={r}>
+              {r}
+            </option>
+          ))}
+        </select>
 
-      {/* 🔥 자연어 입력 */}
-      <input
-        type="text"
-        placeholder="카페 만들기 좋은 빈집을 추천해줘"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") handleSearch();
-        }}
-      />
-      <button onClick={handleSearch}>검색</button>
+        {/* 🔥 자연어 입력 */}
+        <input
+          className="Input"
+          type="text"
+          placeholder="카페 만들기 좋은 빈집을 추천해줘"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") handleSearch();
+          }}
+        />
+        <button className="Button" onClick={handleSearch}>
+          검색
+        </button>
+      </div>
     </div>
   );
 };

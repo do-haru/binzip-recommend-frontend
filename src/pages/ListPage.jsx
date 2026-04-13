@@ -21,6 +21,9 @@ const ListPage = () => {
   useEffect(() => {
     setInputValue(query);
     setRegion(regionParam);
+    if (query && regionParam) {
+      fetchHouses(regionParam, query); // 🔥 추가
+    }
   }, [query, regionParam]);
 
   const fetchHouses = (region, query) => {
