@@ -76,7 +76,7 @@ const ListPage = () => {
             <div className="Input">
               <input
                 type="text"
-                value={query}
+                value={inputValue}
                 placeholder="20대 여자 손님이 많이 오는 카페를 지을거야. 어떤 위치가 좋을까?"
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={(e) => {
