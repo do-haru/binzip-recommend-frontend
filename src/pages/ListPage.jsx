@@ -1,5 +1,9 @@
 import "./ListPage.css";
 
+import logo from "../assets/logo.png";
+
+import Map from "../components/Map";
+
 import { regions } from "../data/regions";
 
 import { useEffect, useState } from "react";
@@ -49,7 +53,31 @@ const ListPage = () => {
 
   return (
     <div className="ListPage">
-      <h1>ListPage</h1>
+      <div className="Header">
+        <img src={logo} alt="logo" className="Logo" />
+        <h1>Bee N-ZIP</h1>
+      </div>
+
+      <div className="SearchMain">
+        <div className="Left">
+          ddd
+          {houses.map((item) => (
+            <HouseCard
+              key={item.id}
+              item={item}
+              onClick={() => navigate(`/detail/${item.id}`)}
+            />
+          ))}
+        </div>
+
+        <div className="Right">
+          <div className="MapSection">
+            <Map />
+          </div>
+          <div className="Bottom">하단 패널</div>
+        </div>
+      </div>
+      {/*
       <div>
         <select value={region} onChange={(e) => setRegion(e.target.value)}>
           <option value="">지역 선택</option>
@@ -80,6 +108,7 @@ const ListPage = () => {
           />
         ))}
       </div>
+       */}
     </div>
   );
 };
