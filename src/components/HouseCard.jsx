@@ -7,11 +7,12 @@ const HouseCard = ({ item, onClick }) => {
       onClick={onClick}
       style={{ cursor: "pointer", border: "1px solid", marginBottom: "10px" }}
     >
+      <p>{item.id}</p>
       <p>
-        {item.house.regionName} {item.house.regionDetail}
+        {item.regionName} {item.regionDetail}
       </p>
-      <p>점수: {item.score}</p>
-      <p>가격: {item.price}만원</p>
+      <p>점수</p>
+      <p>예상가격</p>
 
       {/*
       <p>id: {item.id}</p>

@@ -4,8 +4,6 @@ import logo from "../assets/logo.png";
 
 import Map from "../components/Map";
 
-import { regions } from "../data/regions";
-
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import HouseCard from "../components/HouseCard";
@@ -26,7 +24,7 @@ const ListPage = () => {
     setInputValue(query);
     setRegion(regionParam);
     if (query && regionParam) {
-      fetchHouses(regionParam, query); // 🔥 추가
+      fetchHouses(regionParam, query);
     }
   }, [query, regionParam]);
 
@@ -60,7 +58,6 @@ const ListPage = () => {
 
       <div className="SearchMain">
         <div className="Left">
-          ddd
           {houses.map((item) => (
             <HouseCard
               key={item.id}
@@ -74,41 +71,23 @@ const ListPage = () => {
           <div className="MapSection">
             <Map />
           </div>
-          <div className="Bottom">하단 패널</div>
+          <div className="Bottom">
+            <button className="EditBtn">지역 수정</button>
+            <div className="Input">
+              <input
+                type="text"
+                value={query}
+                placeholder="20대 여자 손님이 많이 오는 카페를 지을거야. 어떤 위치가 좋을까?"
+                onChange={(e) => setInputValue(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") handleSearch();
+                }}
+              />
+              <button onClick={handleSearch}>검색</button>
+            </div>
+          </div>
         </div>
       </div>
-      {/*
-      <div>
-        <select value={region} onChange={(e) => setRegion(e.target.value)}>
-          <option value="">지역 선택</option>
-
-          {regions.map((r) => (
-            <option key={r} value={r}>
-              {r}
-            </option>
-          ))}
-        </select>
-        <input
-          type="text"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") handleSearch();
-          }}
-        />
-        <button onClick={handleSearch}>검색</button>
-      </div>
-
-      <div>
-        {houses.map((item) => (
-          <HouseCard
-            key={item.id}
-            item={item}
-            onClick={() => navigate(`/detail/${item.id}`)}
-          />
-        ))}
-      </div>
-       */}
     </div>
   );
 };
