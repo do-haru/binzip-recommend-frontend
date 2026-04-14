@@ -32,6 +32,8 @@
   overflow-y: auto;
 
   background-color: antiquewhite;
+
+  margin-left: 10px;
 }
 
 .Right {
@@ -40,6 +42,8 @@
   flex-direction: column;
 
   gap: 10px;
+
+  margin-right: 10px;
 }
 
 .MapSection {
