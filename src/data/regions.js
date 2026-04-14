@@ -1,4 +1,5 @@
 export const regions = [
+  "모두",
   "풍기읍",
   "이산면",
   "평은면",

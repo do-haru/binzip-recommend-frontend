@@ -1,53 +1,152 @@
 .SearchPage {
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f5f6f8;
+  height: 100vh;
 }
 
 .SearchContainer {
-  width: 400px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
 
-  padding: 30px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  gap: 20px;
 }
 
 .Title {
-  text-align: center;
-  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
-.Select,
-.Input {
-  height: 40px;
-  padding: 0 10px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 14px;
+.TitleRow1 {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
 }
 
-.Input:focus,
-.Select:focus {
-  outline: none;
-  border-color: #4a90e2;
+.TitleRow1 img {
+  width: 140px;
 }
 
-.Button {
-  height: 42px;
+.TitleRow1 h1 {
+  margin: 0;
+  padding-bottom: 10px;
+
+  font-size: 50px;
+  font-weight: 1000;
+}
+
+.TitleRow2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.2;
+}
+
+.TitleRow2 p {
+  font-size: 28px;
+  font-weight: 700;
+
+  margin: 0;
+}
+
+.TitleRow2 p:first-child {
+  padding-right: 140px;
+}
+
+.TitleRow2 p:last-child {
+  padding-left: 100px;
+}
+
+.RegionSelect {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.RegionSelect p {
+  font-size: 16px;
+  font-weight: 500;
+
+  margin: 0;
+  padding-bottom: 5px;
+}
+
+.RegionRow:last-child {
+  margin-left: 88px;
+}
+
+.RegionSelect button {
+  width: 80px;
+  padding: 6px 14px;
+  margin: 4px;
+  border-radius: 10px;
   border: none;
-  border-radius: 6px;
-  background-color: #4a90e2;
-  color: white;
-  font-weight: bold;
+  background: #f1f1f1;
+  color: #333;
   cursor: pointer;
 }
 
-.Button:hover {
-  background-color: #3a78c2;
+/* 선택된 버튼 */
+.RegionSelect button.active {
+  background: #333;
+  color: white;
+  font-weight: bold;
+}
+
+.PurposeSelect {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.PurposeSelect p {
+  font-weight: 500;
+  margin: 0;
+}
+
+.Input {
+  display: flex;
+  align-items: center;
+  height: 80px;
+
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 8px 12px;
+  background: #fff;
+
+  position: relative;
+  padding: 12px;
+}
+
+.Input input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+/* 버튼 */
+.Input button {
+  position: absolute; /* ← 핵심 */
+  right: 10px;
+  bottom: 10px;
+
+  font-size: 10;
+
+  padding: 5px 14px;
+
+  border-radius: 20%;
+  border: none;
+
+  background: #eee;
+  cursor: pointer;
+}
+
+.Input button:hover {
+  background: #333;
+  color: white;
+  font-weight: bold;
 }
