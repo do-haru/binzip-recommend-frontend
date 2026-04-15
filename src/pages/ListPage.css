@@ -58,6 +58,23 @@
   flex-direction: column;
 }
 
+.Region {
+  display: flex;
+
+  gap: 10px;
+}
+
+.Region p {
+  margin: 0;
+
+  color: #333;
+  font-size: 15px;
+}
+
+.Region p:last-child {
+  color: #777;
+}
+
 .Bottom .EditBtn {
   width: 100px;
   padding: 8px 14px;

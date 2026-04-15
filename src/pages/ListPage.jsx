@@ -15,6 +15,9 @@ const ListPage = () => {
   const query = searchParams.get("q") || "";
   const regionParam = searchParams.get("region") || "";
 
+  const regions = regionParam ? regionParam.split(",") : [];
+  console.log(regions);
+
   const [region, setRegion] = useState(regionParam);
   const [inputValue, setInputValue] = useState(query);
 
@@ -72,7 +75,14 @@ const ListPage = () => {
             <Map />
           </div>
           <div className="Bottom">
-            <button className="EditBtn">지역 수정</button>
+            <div className="Region">
+              <button className="EditBtn">지역 수정</button>
+              <div className="regionSelect">
+                <p>현재 선택된 지역이에요</p>
+                <p>{regions.join(", ")}</p>
+              </div>
+            </div>
+
             <div className="Input">
               <input
                 type="text"
