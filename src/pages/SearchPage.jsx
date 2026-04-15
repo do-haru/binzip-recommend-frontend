@@ -68,7 +68,11 @@ const SearchPage = () => {
                 }
                 onClick={() => {
                   if (r === "모두") {
-                    setRegionsSelected(regions.filter((v) => v !== "모두"));
+                    if (regionsSelected.length === regions.length - 1) {
+                      setRegionsSelected([]); // 전체 해제
+                    } else {
+                      setRegionsSelected(regions.filter((v) => v !== "모두")); // 전체 선택
+                    }
                     return;
                   }
 
