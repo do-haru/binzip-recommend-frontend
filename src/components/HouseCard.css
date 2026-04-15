@@ -1,0 +1,48 @@
+.HouseCard {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+
+  padding: 16px;
+  margin-bottom: 12px;
+
+  border-radius: 10px;
+  background: white;
+  border: 1px solid #eee;
+
+  cursor: pointer;
+}
+
+.CardHeader p {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.Row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 6px;
+}
+
+.Row span {
+  font-size: 13px;
+  color: #777;
+}
+
+.Row strong {
+  font-size: 14px;
+}
+
+.Score {
+  color: #2ecc71;
+  font-weight: 700;
+}
+
+.Price {
+  color: hsl(0, 0%, 20%);
+  font-weight: 700;
+}

@@ -2,17 +2,24 @@ import "./HouseCard.css";
 
 const HouseCard = ({ item, onClick }) => {
   return (
-    <div
-      className="HouseCard"
-      onClick={onClick}
-      style={{ cursor: "pointer", border: "1px solid", marginBottom: "10px" }}
-    >
-      <p>{item.id}</p>
-      <p>
-        {item.regionName} {item.regionDetail}
-      </p>
-      <p>점수</p>
-      <p>예상가격</p>
+    <div className="HouseCard" onClick={onClick}>
+      <div className="CardHeader">
+        <p>
+          {item.regionName} {item.regionDetail}
+        </p>
+      </div>
+      <div className="CardBody">
+        <div className="Row">
+          <span>점수</span>
+          <strong className="Score">{item.score ?? "-"}</strong>
+        </div>
+        <div className="Row">
+          <span>예상 가격</span>
+          <strong className="Price">
+            {item.price ? `${item.price}만원` : "-"}
+          </strong>
+        </div>
+      </div>
 
       {/*
       <p>id: {item.id}</p>
