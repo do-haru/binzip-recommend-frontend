@@ -8,7 +8,9 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const SearchPage = () => {
-  const [regionsSelected, setRegionsSelected] = useState([]);
+  const [regionsSelected, setRegionsSelected] = useState(
+    regions.filter((r) => r !== "모두")
+  );
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
@@ -25,8 +27,8 @@ const SearchPage = () => {
 
     navigate(
       `/list?q=${encodeURIComponent(query)}&region=${encodeURIComponent(
-        regionsSelected.join(","),
-      )}`,
+        regionsSelected.join(",")
+      )}`
     );
   };
 
@@ -55,14 +57,27 @@ const SearchPage = () => {
             {firstRow.map((r) => (
               <button
                 key={r}
-                className={regionsSelected.includes(r) ? "active" : ""}
-                onClick={() =>
+                className={
+                  r === "모두"
+                    ? regionsSelected.length === regions.length - 1
+                      ? "active"
+                      : ""
+                    : regionsSelected.includes(r)
+                    ? "active"
+                    : ""
+                }
+                onClick={() => {
+                  if (r === "모두") {
+                    setRegionsSelected(regions.filter((v) => v !== "모두"));
+                    return;
+                  }
+
                   setRegionsSelected((prev) =>
                     prev.includes(r)
                       ? prev.filter((v) => v !== r)
-                      : [...prev, r],
-                  )
-                }
+                      : [...prev, r]
+                  );
+                }}
               >
                 {r}
               </button>
@@ -78,7 +93,7 @@ const SearchPage = () => {
                   setRegionsSelected((prev) =>
                     prev.includes(r)
                       ? prev.filter((v) => v !== r)
-                      : [...prev, r],
+                      : [...prev, r]
                   )
                 }
               >
