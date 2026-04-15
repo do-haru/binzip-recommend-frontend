@@ -2,6 +2,8 @@ import "./ListPage.css";
 
 import logo from "../assets/logo.png";
 
+import { regions as allRegions } from "../data/regions";
+
 import Map from "../components/Map";
 
 import { useEffect, useState } from "react";
@@ -15,17 +17,20 @@ const ListPage = () => {
   const query = searchParams.get("q") || "";
   const regionParam = searchParams.get("region") || "";
 
-  const regions = regionParam ? regionParam.split(",") : [];
-  console.log(regions);
-
-  const [region, setRegion] = useState(regionParam);
+  const [regionsSelected, setRegionsSelected] = useState(
+    regionParam ? regionParam.split(",") : []
+  );
   const [inputValue, setInputValue] = useState(query);
+
+  const [isRegionOpen, setIsRegionOpen] = useState(false);
 
   const [houses, setHouses] = useState([]);
 
+  const firstRow = allRegions.slice(0, 8);
+  const secondRow = allRegions.slice(8, 16);
+
   useEffect(() => {
     setInputValue(query);
-    setRegion(regionParam);
     if (query && regionParam) {
       fetchHouses(regionParam, query);
     }
@@ -33,7 +38,7 @@ const ListPage = () => {
 
   const fetchHouses = (region, query) => {
     fetch(
-      `http://localhost:8080/api/houses/test1?regionName=${region}&query=${query}`,
+      `http://localhost:8080/api/houses/test1?regionName=${region}&query=${query}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -46,10 +51,29 @@ const ListPage = () => {
     if (!inputValue.trim()) return;
     if (!region) return;
     navigate(
-      `/list?q=${encodeURIComponent(query)}&region=${encodeURIComponent(region)}`,
+      `/list?q=${encodeURIComponent(query)}&region=${encodeURIComponent(
+        region
+      )}`
     );
 
     fetchHouses(region, inputValue);
+  };
+
+  const handleRegionSearch = () => {
+    if (!inputValue.trim()) return;
+    if (regionsSelected.length === 0) return;
+
+    const regionString = regionsSelected.join(",");
+
+    navigate(
+      `/list?q=${encodeURIComponent(inputValue)}&region=${encodeURIComponent(
+        regionString
+      )}`
+    );
+
+    fetchHouses(regionString, inputValue);
+
+    setIsRegionOpen(false); // 창 닫기
   };
 
   return (
@@ -76,10 +100,108 @@ const ListPage = () => {
           </div>
           <div className="Bottom">
             <div className="Region">
-              <button className="EditBtn">지역 수정</button>
+              <div className="RegionWrapper">
+                <button
+                  className="EditBtn"
+                  onClick={() => {
+                    if (isRegionOpen) {
+                      handleRegionSearch(); // 열려있으면 검색 + 닫기
+                    } else {
+                      setIsRegionOpen(true); // 닫혀있으면 열기
+                    }
+                  }}
+                >
+                  지역 수정
+                </button>
+                {isRegionOpen && (
+                  <div className="RegionSelect">
+                    <button
+                      className="RegionSearchBtn"
+                      onClick={handleRegionSearch}
+                    >
+                      <svg
+                        width="15"
+                        height="15"
+                        viewBox="0 0 15 15"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M7.08333 12.9167V1.25M7.08333 1.25L1.25 7.08333M7.08333 1.25L12.9167 7.08333"
+                          stroke="#F5F5F5"
+                          strokeWidth="2.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </button>
+                    <p>어떤 지역을 원하시나요?</p>
+
+                    <div className="RegionRow">
+                      {firstRow.map((r) => (
+                        <button
+                          key={r}
+                          className={
+                            r === "모두"
+                              ? regionsSelected.length === allRegions.length - 1
+                                ? "active"
+                                : ""
+                              : regionsSelected.includes(r)
+                              ? "active"
+                              : ""
+                          }
+                          onClick={() => {
+                            if (r === "모두") {
+                              if (
+                                regionsSelected.length ===
+                                allRegions.length - 1
+                              ) {
+                                setRegionsSelected([]);
+                              } else {
+                                setRegionsSelected(
+                                  allRegions.filter((v) => v !== "모두")
+                                );
+                              }
+                              return;
+                            }
+
+                            setRegionsSelected((prev) =>
+                              prev.includes(r)
+                                ? prev.filter((v) => v !== r)
+                                : [...prev, r]
+                            );
+                          }}
+                        >
+                          {r}
+                        </button>
+                      ))}
+                    </div>
+
+                    <div className="RegionRow">
+                      {secondRow.map((r) => (
+                        <button
+                          key={r}
+                          className={
+                            regionsSelected.includes(r) ? "active" : ""
+                          }
+                          onClick={() =>
+                            setRegionsSelected((prev) =>
+                              prev.includes(r)
+                                ? prev.filter((v) => v !== r)
+                                : [...prev, r]
+                            )
+                          }
+                        >
+                          {r}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
               <div className="regionSelect">
                 <p>현재 선택된 지역이에요</p>
-                <p>{regions.join(", ")}</p>
+                <p>{regionsSelected.join(", ")}</p>
               </div>
             </div>
 

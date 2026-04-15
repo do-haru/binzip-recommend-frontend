@@ -86,3 +86,46 @@
   color: white;
   font-weight: bold;
 }
+.RegionWrapper {
+  position: relative;
+}
+.RegionSelect {
+  position: absolute;
+
+  bottom: 100%; /* 🔥 버튼 높이만큼 위 */
+  left: 0;
+
+  margin-left: 110px; /* 버튼 오른쪽으로 이동 */
+
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  border: #d9d9d9d9 solid 1px;
+
+  width: 600px;
+
+  z-index: 9999;
+}
+.RegionSearchBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  height: 40px;
+  border: none;
+
+  background-color: #000; /* 검정 */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.RegionSelect .RegionSearchBtn {
+  width: 40px;
+
+  background-color: #000;
+  border-radius: 50%;
+}
