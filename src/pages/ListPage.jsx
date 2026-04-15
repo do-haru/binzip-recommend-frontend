@@ -200,7 +200,16 @@ const ListPage = () => {
                 )}
               </div>
               <div className="regionSelect">
-                <p>현재 선택된 지역이에요</p>
+                <div className="RegionLabel">
+                  <p>현재 선택된 지역이에요</p>
+                  <div className="TooltipWrapper">
+                    <span className="InfoBtn">?</span>
+
+                    <div className="Tooltip">
+                      지역을 변경하려면 <b>지역 수정 버튼</b>을 눌러주세요
+                    </div>
+                  </div>
+                </div>
                 <p>{regionsSelected.join(", ")}</p>
               </div>
             </div>
