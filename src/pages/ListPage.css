@@ -29,9 +29,43 @@
 .Left {
   width: 500px;
   height: 100%;
-  overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
 
   margin-left: 10px;
+}
+
+.ResultHeader {
+  margin-bottom: 20px;
+}
+
+.ResultHeader h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+}
+
+.ResultHeader p {
+  margin: 0;
+  font-size: 13px;
+  color: #777;
+  line-height: 1.4;
+}
+
+.CardList {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.ResultText {
+  position: relative;
+}
+
+.LastLine {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .Right {
@@ -138,6 +172,9 @@
 
 .TooltipWrapper {
   position: relative;
+  display: inline-flex; /* 🔥 inline-block → 이걸로 변경 */
+  align-items: center;
+  margin-left: 4px;
 }
 
 .InfoBtn {
@@ -154,7 +191,8 @@
   font-size: 12px;
 
   cursor: pointer;
-  padding-bottom: 1px;
+
+  line-height: 1; /* 🔥 추가 */
 }
 
 /* 🔥 핵심 */

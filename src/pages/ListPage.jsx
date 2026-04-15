@@ -85,13 +85,39 @@ const ListPage = () => {
 
       <div className="SearchMain">
         <div className="Left">
-          {houses.map((item) => (
-            <HouseCard
-              key={item.id}
-              item={item}
-              onClick={() => navigate(`/detail/${item.id}`)}
-            />
-          ))}
+          <div className="ResultHeader">
+            <h2>총 {houses.length}개의 추천 후보지를 찾았어요</h2>
+
+            <div className="ResultDesc">
+              <div className="ResultText">
+                <p>
+                  다양한 조건을 종합해 산출한 추천 점수를 기준으로 정렬했어요
+                </p>
+
+                <p className="LastLine">
+                  리스트의 카드를 선택하면 상세 정보를 확인할 수 있어요
+                  <span className="TooltipWrapper">
+                    <span className="InfoBtn">?</span>
+
+                    <span className="Tooltip">
+                      주변 시세를 기반해 예상 가격을 산출했어요
+                      <br />
+                      실제 가격과 차이가 있을 수 있어요
+                    </span>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="CardList">
+            {houses.map((item) => (
+              <HouseCard
+                key={item.id}
+                item={item}
+                onClick={() => navigate(`/detail/${item.id}`)}
+              />
+            ))}
+          </div>
         </div>
 
         <div className="Right">
