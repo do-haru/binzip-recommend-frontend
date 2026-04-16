@@ -5,6 +5,7 @@ import logo from "../assets/logo.png";
 import { regions as allRegions } from "../data/regions";
 
 import Map from "../components/Map";
+import DetailPanel from "../components/DetailPanel";
 
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -28,6 +29,8 @@ const ListPage = () => {
 
   const firstRow = allRegions.slice(0, 8);
   const secondRow = allRegions.slice(8, 16);
+
+  const [selectedHouse, setSelectedHouse] = useState(null);
 
   useEffect(() => {
     setInputValue(query);
@@ -79,6 +82,10 @@ const ListPage = () => {
     setIsRegionOpen(false); // 창 닫기
   };
 
+  useEffect(() => {
+    console.log(selectedHouse);
+  }, [selectedHouse]); // 임시
+
   return (
     <div className="ListPage">
       <div className="Header">
@@ -117,7 +124,7 @@ const ListPage = () => {
               <HouseCard
                 key={item.house.id}
                 item={item}
-                onClick={() => navigate(`/detail/${item.id}`)}
+                onClick={() => setSelectedHouse(item)}
               />
             ))}
           </div>
@@ -126,6 +133,7 @@ const ListPage = () => {
         <div className="Right">
           <div className="MapSection">
             <Map />
+            {selectedHouse && <DetailPanel />}
           </div>
           <div className="Bottom">
             <div className="Region">
