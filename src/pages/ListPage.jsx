@@ -115,7 +115,7 @@ const ListPage = () => {
           <div className="CardList">
             {houses.map((item) => (
               <HouseCard
-                key={item.id}
+                key={item.house.id}
                 item={item}
                 onClick={() => navigate(`/detail/${item.id}`)}
               />
