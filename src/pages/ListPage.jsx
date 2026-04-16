@@ -19,7 +19,7 @@ const ListPage = () => {
   const regionParam = searchParams.get("region") || "";
 
   const [regionsSelected, setRegionsSelected] = useState(
-    regionParam ? regionParam.split(",") : [],
+    regionParam ? regionParam.split(",") : []
   );
   const [inputValue, setInputValue] = useState(query);
 
@@ -41,7 +41,7 @@ const ListPage = () => {
 
   const fetchHouses = (region, query) => {
     fetch(
-      `http://localhost:8080/api/houses/test1?regionName=${region}&query=${query}`,
+      `http://localhost:8080/api/houses/test1?regionName=${region}&query=${query}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -58,8 +58,8 @@ const ListPage = () => {
 
     navigate(
       `/list?q=${encodeURIComponent(inputValue)}&region=${encodeURIComponent(
-        regionString,
-      )}`,
+        regionString
+      )}`
     );
 
     fetchHouses(regionString, inputValue);
@@ -73,8 +73,8 @@ const ListPage = () => {
 
     navigate(
       `/list?q=${encodeURIComponent(inputValue)}&region=${encodeURIComponent(
-        regionString,
-      )}`,
+        regionString
+      )}`
     );
 
     fetchHouses(regionString, inputValue);
@@ -126,23 +126,22 @@ const ListPage = () => {
                 item={item}
                 onClick={() =>
                   setSelectedHouse((prev) =>
-                    prev?.house.id === item.house.id ? null : item,
+                    prev?.house.id === item.house.id ? null : item
                   )
                 }
               />
             ))}
           </div>
         </div>
-
+        {selectedHouse && (
+          <DetailPanel
+            item={selectedHouse}
+            onClose={() => setSelectedHouse(null)}
+          />
+        )}
         <div className="Right">
           <div className="MapSection">
             <Map />
-            {selectedHouse && (
-              <DetailPanel
-                item={selectedHouse}
-                onClose={() => setSelectedHouse(null)}
-              />
-            )}
           </div>
           <div className="Bottom">
             <div className="Region">
@@ -193,8 +192,8 @@ const ListPage = () => {
                                 ? "active"
                                 : ""
                               : regionsSelected.includes(r)
-                                ? "active"
-                                : ""
+                              ? "active"
+                              : ""
                           }
                           onClick={() => {
                             if (r === "모두") {
@@ -205,7 +204,7 @@ const ListPage = () => {
                                 setRegionsSelected([]);
                               } else {
                                 setRegionsSelected(
-                                  allRegions.filter((v) => v !== "모두"),
+                                  allRegions.filter((v) => v !== "모두")
                                 );
                               }
                               return;
@@ -214,7 +213,7 @@ const ListPage = () => {
                             setRegionsSelected((prev) =>
                               prev.includes(r)
                                 ? prev.filter((v) => v !== r)
-                                : [...prev, r],
+                                : [...prev, r]
                             );
                           }}
                         >
@@ -234,7 +233,7 @@ const ListPage = () => {
                             setRegionsSelected((prev) =>
                               prev.includes(r)
                                 ? prev.filter((v) => v !== r)
-                                : [...prev, r],
+                                : [...prev, r]
                             )
                           }
                         >

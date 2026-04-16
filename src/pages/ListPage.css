@@ -24,6 +24,8 @@
   height: 0;
 
   gap: 10px;
+
+  position: relative; /* 🔥 추가 */
 }
 
 .Left {
