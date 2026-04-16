@@ -1,50 +1,43 @@
 import "./HouseCard.css";
 
 const HouseCard = ({ item, onClick }) => {
+  const { house, reasons, reasonText } = item;
+
+  const typeText = house.houseType === "단독" ? "단독 건물" : "복합 건물";
+
   return (
-    <div className="HouseCard" onClick={onClick}>
-      <div className="CardHeader">
-        <p>
-          {item.regionName} {item.regionDetail}
-        </p>
-      </div>
-      <div className="CardBody">
-        <div className="Row">
-          <span>점수</span>
-          <strong className="Score">{item.score ?? "-"}</strong>
+    <div className="HouseCard">
+      {/* 주소 */}
+      <h3 className="Title">
+        {house.regionName} {house.regionDetail} {typeText}
+      </h3>
+
+      <div className="InfoSection">
+        {/* 점수 */}
+        <div className="BadgeRow">
+          <span className="Badge">추천 점수</span>
+          <span className="ScoreText">{house.score}점</span>
         </div>
-        <div className="Row">
-          <span>예상 가격</span>
-          <strong className="Price">
-            {item.price ? `${item.price}만원` : "-"}
-          </strong>
+
+        {/* 이유 */}
+        <div className="ReasonRow">
+          <span className="Badge">추천 이유</span>
+          <span className="ReasonText">{reasonText}</span>
         </div>
       </div>
 
-      {/*
-      <p>id: {item.id}</p>
-      <p>house id: {item.house.id}</p>
-      <p>house 읍/면/동: {item.house.regionName}</p>
-      <p>house 리: {item.house.regionDetail}</p>
-      <p>house 면적: {item.house.area}</p>
-      <p>house 주택유형: {item.house.housetype}</p>
-      <p>house 빈집 상태 등급: {item.house.grade}</p>
-      <p>house 관리 기관명: {item.house.manager}</p>
-      <p>house 전화번호: {item.house.phone}</p>
+      <div className="TagList">
+        {reasons.map((r, idx) => (
+          <span key={idx} className="Tag">
+            {r}
+          </span>
+        ))}
+      </div>
 
-      <p>위도: {item.latitude}</p>
-      <p>경도: {item.longitude}</p>
-      <p>편의시설갯수: {item.facilityCount}</p>
-      <p>유동인구수준: {item.crowd}</p>
-      <p>연령대별 방문 비율 정보</p>
-      <p> 10대: {item.age10} </p>
-      <p> 20대: {item.age20} </p>
-      <p> 30대: {item.age30} </p>
-      <p> 40대: {item.age40} </p>
-      <p> etc: {item.ageEtc} </p>
-      <p>가격: {item.price}만원</p>
-      <p>점수: {item.score}</p>
-       */}
+      <div className="Price">
+        <span className="PriceBadge">예상 가격</span>
+        <span className="PriceValue">{house.price.toLocaleString()}만 원</span>
+      </div>
     </div>
   );
 };

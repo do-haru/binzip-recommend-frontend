@@ -1,48 +1,114 @@
 .HouseCard {
-  display: flex;
-  flex-direction: column;
-
-  gap: 10px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
 
   padding: 16px;
   margin-bottom: 12px;
 
-  border-radius: 10px;
-  background: white;
-  border: 1px solid #eee;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 
-  cursor: pointer;
-}
-
-.CardHeader p {
-  margin: 0;
-  font-size: 15px;
-  font-weight: 700;
-}
-
-.Row {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  margin-bottom: 6px;
+  flex-direction: column;
+  align-items: start;
 }
 
-.Row span {
-  font-size: 13px;
-  color: #777;
-}
-
-.Row strong {
-  font-size: 14px;
-}
-
-.Score {
-  color: #2ecc71;
+.HouseCard .Title {
+  font-size: 18px;
   font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.HouseCard .InfoSection {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  margin-bottom: 10px;
+}
+
+.ReasonRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.Badge {
+  background: #14ae5c; /* 좀 더 밝은 초록 */
+  color: white;
+
+  padding: 4px 10px; /* 🔥 더 두툼 */
+  border-radius: 999px; /* 🔥 완전 pill */
+
+  font-size: 12px;
+  font-weight: 600;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  white-space: nowrap; /* 🔥 버튼은 줄바꿈 금지 */
+}
+
+.ReasonText {
+  flex: 1;
+
+  white-space: normal; /* 🔥 줄바꿈 허용 */
+  word-break: keep-all; /* 🔥 한글 자연스럽게 */
+  line-height: 1.4;
+  color: #757575;
+}
+
+.ScoreText {
+  margin-left: 8px;
+  color: #757575;
+}
+
+.TagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
+
+.Tag {
+  background: #333;
+  color: white;
+
+  padding: 4px 8px;
+  border-radius: 999px; /* pill */
+
+  font-size: 12px;
+  font-weight: 500;
+
+  white-space: nowrap;
 }
 
 .Price {
-  color: hsl(0, 0%, 20%);
-  font-weight: 700;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end; /* 🔥 오른쪽 정렬 */
+  align-items: center;
+  gap: 6px;
+
+  margin-top: 6px;
+}
+
+.PriceBadge {
+  background: #d9d9d9d9;
+  color: #333;
+
+  padding: 4px 10px;
+  border-radius: 999px;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  white-space: nowrap;
+}
+
+.PriceValue {
+  color: #757575;
 }
