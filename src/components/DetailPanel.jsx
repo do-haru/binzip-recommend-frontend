@@ -80,6 +80,19 @@ const DetailPanel = ({ item, onClose }) => {
           확인해주세요
         </div>
       </div>
+
+      <div className="EstateCardSection">
+        {item.estates?.map((estate, idx) => (
+          <div key={idx} className="EstateCard">
+            <div className="EstateName">{estate.name}</div>
+
+            <div className="EstateAddressRow">
+              <span className="BlackLabel">도로명 주소</span>
+              <span className="EstateAddress">{estate.address}</span>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
