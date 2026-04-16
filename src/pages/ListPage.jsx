@@ -137,7 +137,12 @@ const ListPage = () => {
         <div className="Right">
           <div className="MapSection">
             <Map />
-            {selectedHouse && <DetailPanel />}
+            {selectedHouse && (
+              <DetailPanel
+                item={selectedHouse}
+                onClose={() => setSelectedHouse(null)}
+              />
+            )}
           </div>
           <div className="Bottom">
             <div className="Region">
