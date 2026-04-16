@@ -1,12 +1,15 @@
 import "./HouseCard.css";
 
-const HouseCard = ({ item, onClick }) => {
+const HouseCard = ({ item, onClick, isSelected }) => {
   const { house, reasons, reasonText } = item;
 
   const typeText = house.houseType === "단독" ? "단독 건물" : "복합 건물";
 
   return (
-    <div className="HouseCard" onClick={onClick}>
+    <div
+      className={`HouseCard ${isSelected ? "selected" : ""}`}
+      onClick={onClick}
+    >
       {/* 주소 */}
       <h3 className="Title">
         {house.regionName} {house.regionDetail} {typeText}

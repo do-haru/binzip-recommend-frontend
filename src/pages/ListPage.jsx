@@ -129,6 +129,7 @@ const ListPage = () => {
                     prev?.house.id === item.house.id ? null : item
                   )
                 }
+                isSelected={selectedHouse?.house.id === item.house.id}
               />
             ))}
           </div>
