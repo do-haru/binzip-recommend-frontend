@@ -49,14 +49,17 @@ const ListPage = () => {
 
   const handleSearch = () => {
     if (!inputValue.trim()) return;
-    if (!region) return;
+    if (regionsSelected.length === 0) return;
+
+    const regionString = regionsSelected.join(",");
+
     navigate(
-      `/list?q=${encodeURIComponent(query)}&region=${encodeURIComponent(
-        region,
+      `/list?q=${encodeURIComponent(inputValue)}&region=${encodeURIComponent(
+        regionString,
       )}`,
     );
 
-    fetchHouses(region, inputValue);
+    fetchHouses(regionString, inputValue);
   };
 
   const handleRegionSearch = () => {
