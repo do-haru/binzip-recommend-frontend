@@ -18,7 +18,7 @@ const ListPage = () => {
   const regionParam = searchParams.get("region") || "";
 
   const [regionsSelected, setRegionsSelected] = useState(
-    regionParam ? regionParam.split(",") : []
+    regionParam ? regionParam.split(",") : [],
   );
   const [inputValue, setInputValue] = useState(query);
 
@@ -38,7 +38,7 @@ const ListPage = () => {
 
   const fetchHouses = (region, query) => {
     fetch(
-      `http://localhost:8080/api/houses/test1?regionName=${region}&query=${query}`
+      `http://localhost:8080/api/houses/test1?regionName=${region}&query=${query}`,
     )
       .then((res) => res.json())
       .then((data) => {
@@ -52,8 +52,8 @@ const ListPage = () => {
     if (!region) return;
     navigate(
       `/list?q=${encodeURIComponent(query)}&region=${encodeURIComponent(
-        region
-      )}`
+        region,
+      )}`,
     );
 
     fetchHouses(region, inputValue);
@@ -67,8 +67,8 @@ const ListPage = () => {
 
     navigate(
       `/list?q=${encodeURIComponent(inputValue)}&region=${encodeURIComponent(
-        regionString
-      )}`
+        regionString,
+      )}`,
     );
 
     fetchHouses(regionString, inputValue);
@@ -163,7 +163,7 @@ const ListPage = () => {
                     </button>
                     <p>어떤 지역을 원하시나요?</p>
 
-                    <div className="RegionRow">
+                    <div className="ListRegionRow">
                       {firstRow.map((r) => (
                         <button
                           key={r}
@@ -173,8 +173,8 @@ const ListPage = () => {
                                 ? "active"
                                 : ""
                               : regionsSelected.includes(r)
-                              ? "active"
-                              : ""
+                                ? "active"
+                                : ""
                           }
                           onClick={() => {
                             if (r === "모두") {
@@ -185,7 +185,7 @@ const ListPage = () => {
                                 setRegionsSelected([]);
                               } else {
                                 setRegionsSelected(
-                                  allRegions.filter((v) => v !== "모두")
+                                  allRegions.filter((v) => v !== "모두"),
                                 );
                               }
                               return;
@@ -194,7 +194,7 @@ const ListPage = () => {
                             setRegionsSelected((prev) =>
                               prev.includes(r)
                                 ? prev.filter((v) => v !== r)
-                                : [...prev, r]
+                                : [...prev, r],
                             );
                           }}
                         >
@@ -203,7 +203,7 @@ const ListPage = () => {
                       ))}
                     </div>
 
-                    <div className="RegionRow">
+                    <div className="ListRegionRow">
                       {secondRow.map((r) => (
                         <button
                           key={r}
@@ -214,7 +214,7 @@ const ListPage = () => {
                             setRegionsSelected((prev) =>
                               prev.includes(r)
                                 ? prev.filter((v) => v !== r)
-                                : [...prev, r]
+                                : [...prev, r],
                             )
                           }
                         >

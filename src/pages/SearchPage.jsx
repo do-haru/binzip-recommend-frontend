@@ -9,7 +9,7 @@ import { useState } from "react";
 
 const SearchPage = () => {
   const [regionsSelected, setRegionsSelected] = useState(
-    regions.filter((r) => r !== "모두")
+    regions.filter((r) => r !== "모두"),
   );
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
@@ -27,8 +27,8 @@ const SearchPage = () => {
 
     navigate(
       `/list?q=${encodeURIComponent(query)}&region=${encodeURIComponent(
-        regionsSelected.join(",")
-      )}`
+        regionsSelected.join(","),
+      )}`,
     );
   };
 
@@ -51,7 +51,7 @@ const SearchPage = () => {
         </div>
 
         {/* 지역 선택 */}
-        <div className="RegionSelect">
+        <div className="SearchRegionSelect">
           <p>어떤 지역을 원하시나요?</p>
           <div className="RegionRow">
             {firstRow.map((r) => (
@@ -63,8 +63,8 @@ const SearchPage = () => {
                       ? "active"
                       : ""
                     : regionsSelected.includes(r)
-                    ? "active"
-                    : ""
+                      ? "active"
+                      : ""
                 }
                 onClick={() => {
                   if (r === "모두") {
@@ -79,7 +79,7 @@ const SearchPage = () => {
                   setRegionsSelected((prev) =>
                     prev.includes(r)
                       ? prev.filter((v) => v !== r)
-                      : [...prev, r]
+                      : [...prev, r],
                   );
                 }}
               >
@@ -97,7 +97,7 @@ const SearchPage = () => {
                   setRegionsSelected((prev) =>
                     prev.includes(r)
                       ? prev.filter((v) => v !== r)
-                      : [...prev, r]
+                      : [...prev, r],
                   )
                 }
               >

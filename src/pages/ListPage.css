@@ -136,7 +136,7 @@
   border-radius: 15px;
   border: #d9d9d9d9 solid 1px;
 
-  width: 600px;
+  width: 800px;
 
   z-index: 9999;
 }
@@ -157,6 +157,28 @@
   cursor: pointer;
 }
 
+.RegionSelect button {
+  width: 80px;
+  padding: 6px 14px;
+  margin: 4px;
+  border-radius: 10px;
+  border: none;
+
+  background: #f1f1f1;
+  color: #333;
+  cursor: pointer;
+}
+
+.RegionSelect .ListRegionRow:last-child {
+  margin-left: 90px;
+}
+
+.RegionSelect button.active {
+  background: #333;
+  color: white;
+  font-weight: bold;
+}
+
 .RegionSelect .RegionSearchBtn {
   width: 40px;
 
@@ -172,7 +194,7 @@
 
 .TooltipWrapper {
   position: relative;
-  display: inline-flex; /* 🔥 inline-block → 이걸로 변경 */
+  display: inline-flex;
   align-items: center;
   margin-left: 4px;
 }
