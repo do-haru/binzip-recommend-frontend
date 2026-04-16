@@ -124,7 +124,11 @@ const ListPage = () => {
               <HouseCard
                 key={item.house.id}
                 item={item}
-                onClick={() => setSelectedHouse(item)}
+                onClick={() =>
+                  setSelectedHouse((prev) =>
+                    prev?.house.id === item.house.id ? null : item,
+                  )
+                }
               />
             ))}
           </div>
