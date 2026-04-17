@@ -13,7 +13,7 @@ const MoveMap = ({ selectedHouse }) => {
       const lng = selectedHouse.house.longitude;
 
       // 👉 선택되면 오른쪽으로 이동
-      map.flyTo([lat, lng - 0.1], 12);
+      map.flyTo([lat, lng - 0.1], 11);
     } else {
       // 👉 닫히면 원래 위치로
       map.flyTo([36.8757, 128.624], 11); // 🔥 초기 center 값
@@ -58,7 +58,7 @@ const Map = ({ houses, selectedHouse }) => {
   const selectedIcon = L.divIcon({
     html: `
     <div style="transform: translate(-50%, -100%);">
-     <svg width="32" height="32" viewBox="0 0 46 46" fill="none">
+      <svg width="32" height="32" viewBox="0 0 46 46" fill="none">
   <path
     d="M40.25 19.1667C40.25 32.5834 23 44.0834 23 44.0834C23 44.0834 5.75 32.5834 5.75 19.1667C5.75 14.5918 7.56741 10.2042 10.8024 6.96915C14.0374 3.73415 18.425 1.91675 23 1.91675C27.575 1.91675 31.9626 3.73415 35.1976 6.96915C38.4326 10.2042 40.25 14.5918 40.25 19.1667Z"
     fill="#900B09"              // 🔥 추가
