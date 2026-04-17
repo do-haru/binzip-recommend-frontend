@@ -12,9 +12,37 @@
   align-items: center;
   gap: 10px;
 
+  justify-content: space-between;
+
   padding-left: 10px;
   height: 100px;
   border-bottom: solid 1px #d9d9d9;
+}
+
+.Logo {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+.ContactBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px; /* 🔥 아이콘과 글자 간격 */
+
+  padding: 8px 14px;
+
+  background-color: black;
+  color: white;
+
+  border: none;
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  margin-right: 10px;
 }
 
 .Header h1 {

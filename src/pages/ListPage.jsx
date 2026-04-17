@@ -91,10 +91,30 @@ const ListPage = () => {
   return (
     <div className="ListPage">
       <div className="Header">
-        <Link to="/">
-          <img src={logo} alt="logo" />
-        </Link>
-        <h1>Bee N-ZIP</h1>
+        <div className="Logo">
+          <Link to="/">
+            <img src={logo} alt="logo" />
+          </Link>
+          <h1>Bee N-ZIP</h1>
+        </div>
+
+        <button className="ContactBtn">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 14 14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12.7998 8.80005C12.7998 9.15367 12.6593 9.49281 12.4093 9.74286C12.1592 9.99291 11.8201 10.1334 11.4665 10.1334H3.46647L0.799805 12.8V2.13338C0.799805 1.77976 0.94028 1.44062 1.19033 1.19057C1.44038 0.940525 1.77952 0.800049 2.13314 0.800049H11.4665C11.8201 0.800049 12.1592 0.940525 12.4093 1.19057C12.6593 1.44062 12.7998 1.77976 12.7998 2.13338V8.80005Z"
+              stroke="#F5F5F5"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          문의하기
+        </button>
       </div>
 
       <div className="SearchMain">
