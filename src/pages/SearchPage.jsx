@@ -69,9 +69,9 @@ const SearchPage = () => {
                 onClick={() => {
                   if (r === "모두") {
                     if (regionsSelected.length === regions.length - 1) {
-                      setRegionsSelected([]); // 전체 해제
+                      setRegionsSelected([]);
                     } else {
-                      setRegionsSelected(regions.filter((v) => v !== "모두")); // 전체 선택
+                      setRegionsSelected(regions.filter((v) => v !== "모두"));
                     }
                     return;
                   }
@@ -83,7 +83,15 @@ const SearchPage = () => {
                   );
                 }}
               >
-                {r}
+                <>
+                  {(r === "모두"
+                    ? regionsSelected.length === regions.length - 1
+                    : regionsSelected.includes(r)) && (
+                    <span className="CheckIcon">✓</span>
+                  )}
+
+                  {r}
+                </>
               </button>
             ))}
           </div>
@@ -92,16 +100,41 @@ const SearchPage = () => {
             {secondRow.map((r) => (
               <button
                 key={r}
-                className={regionsSelected.includes(r) ? "active" : ""}
-                onClick={() =>
+                className={
+                  r === "모두"
+                    ? regionsSelected.length === regions.length - 1
+                      ? "active"
+                      : ""
+                    : regionsSelected.includes(r)
+                      ? "active"
+                      : ""
+                }
+                onClick={() => {
+                  if (r === "모두") {
+                    if (regionsSelected.length === regions.length - 1) {
+                      setRegionsSelected([]);
+                    } else {
+                      setRegionsSelected(regions.filter((v) => v !== "모두"));
+                    }
+                    return;
+                  }
+
                   setRegionsSelected((prev) =>
                     prev.includes(r)
                       ? prev.filter((v) => v !== r)
                       : [...prev, r],
-                  )
-                }
+                  );
+                }}
               >
-                {r}
+                <>
+                  {(r === "모두"
+                    ? regionsSelected.length === regions.length - 1
+                    : regionsSelected.includes(r)) && (
+                    <span className="CheckIcon">✓</span>
+                  )}
+
+                  {r}
+                </>
               </button>
             ))}
           </div>

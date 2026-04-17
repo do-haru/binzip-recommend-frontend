@@ -242,7 +242,15 @@ const ListPage = () => {
                             );
                           }}
                         >
-                          {r}
+                          <>
+                            {(r === "모두"
+                              ? regionsSelected.length === allRegions.length - 1
+                              : regionsSelected.includes(r)) && (
+                              <span className="CheckIcon">✓</span>
+                            )}
+
+                            {r}
+                          </>
                         </button>
                       ))}
                     </div>
@@ -252,17 +260,45 @@ const ListPage = () => {
                         <button
                           key={r}
                           className={
-                            regionsSelected.includes(r) ? "active" : ""
+                            r === "모두"
+                              ? regionsSelected.length === allRegions.length - 1
+                                ? "active"
+                                : ""
+                              : regionsSelected.includes(r)
+                                ? "active"
+                                : ""
                           }
-                          onClick={() =>
+                          onClick={() => {
+                            if (r === "모두") {
+                              if (
+                                regionsSelected.length ===
+                                allRegions.length - 1
+                              ) {
+                                setRegionsSelected([]);
+                              } else {
+                                setRegionsSelected(
+                                  allRegions.filter((v) => v !== "모두"),
+                                );
+                              }
+                              return;
+                            }
+
                             setRegionsSelected((prev) =>
                               prev.includes(r)
                                 ? prev.filter((v) => v !== r)
                                 : [...prev, r],
-                            )
-                          }
+                            );
+                          }}
                         >
-                          {r}
+                          <>
+                            {(r === "모두"
+                              ? regionsSelected.length === allRegions.length - 1
+                              : regionsSelected.includes(r)) && (
+                              <span className="CheckIcon">✓</span>
+                            )}
+
+                            {r}
+                          </>
                         </button>
                       ))}
                     </div>

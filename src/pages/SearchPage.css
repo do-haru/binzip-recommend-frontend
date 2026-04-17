@@ -93,6 +93,11 @@
   cursor: pointer;
 }
 
+.CheckIcon {
+  margin-right: 4px;
+  font-size: 12px;
+}
+
 .SearchRegionSelect .RegionRow:last-child {
   margin-left: 90px;
 }
