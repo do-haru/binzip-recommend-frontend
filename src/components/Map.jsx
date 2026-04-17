@@ -13,7 +13,7 @@ const MoveMap = ({ selectedHouse }) => {
       const lng = selectedHouse.house.longitude;
 
       // 👉 선택되면 오른쪽으로 이동
-      map.flyTo([lat, lng - 0.1], 11);
+      map.flyTo([lat, lng - 0.1], 12);
     } else {
       // 👉 닫히면 원래 위치로
       map.flyTo([36.8757, 128.624], 11); // 🔥 초기 center 값
