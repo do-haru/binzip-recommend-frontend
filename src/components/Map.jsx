@@ -3,7 +3,7 @@ import { Marker, Popup } from "react-leaflet";
 import { useEffect, useState } from "react";
 import L from "leaflet";
 
-const Map = ({ houses }) => {
+const Map = ({ houses, selectedHouse }) => {
   const [geoData, setGeoData] = useState(null);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const Map = ({ houses }) => {
     ),
   };
 
-  const customIcon = L.divIcon({
+  const defaultIcon = L.divIcon({
     html: `
     <div style="transform: translate(-50%, -100%);">
       <svg width="24" height="24" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -31,7 +31,24 @@ const Map = ({ houses }) => {
     </div>
   `,
     className: "", // 기본 아이콘 제거
-    iconSize: [24, 24],
+    iconSize: [20, 20],
+    iconAnchor: [10, 20],
+  });
+
+  const selectedIcon = L.divIcon({
+    html: `
+    <div style="transform: translate(-50%, -100%);">
+      <svg width="32" height="32" viewBox="0 0 46 46" fill="none">
+        <path d="M40.25 19.1667C40.25 32.5834 23 44.0834 23 44.0834C23 44.0834 5.75 32.5834 5.75 19.1667C5.75 14.5918 7.56741 10.2042 10.8024 6.96915C14.0374 3.73415 18.425 1.91675 23 1.91675C27.575 1.91675 31.9626 3.73415 35.1976 6.96915C38.4326 10.2042 40.25 14.5918 40.25 19.1667Z"
+          stroke="#900B09" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M23 24.9167C26.1756 24.9167 28.75 22.3424 28.75 19.1667C28.75 15.9911 26.1756 13.4167 23 13.4167C19.8244 13.4167 17.25 15.9911 17.25 19.1667C17.25 22.3424 19.8244 24.9167 23 24.9167Z"
+          stroke="#900B09" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  `,
+    className: "",
+    iconSize: [20, 20],
+    iconAnchor: [10, 20],
   });
 
   return (
@@ -54,17 +71,18 @@ const Map = ({ houses }) => {
           }}
         />
       )}
-      {houses.map((item) => (
-        <Marker
-          key={item.house.id}
-          position={[item.house.latitude, item.house.longitude]}
-          icon={customIcon}
-        >
-          <Popup>
-            {item.house.regionName} {item.house.regionDetail}
-          </Popup>
-        </Marker>
-      ))}
+      {houses.map((item) => {
+        const isSelected =
+          selectedHouse && item.house.id === selectedHouse.house.id;
+
+        return (
+          <Marker
+            key={item.house.id}
+            position={[item.house.latitude, item.house.longitude]}
+            icon={isSelected ? selectedIcon : defaultIcon}
+          />
+        );
+      })}
     </MapContainer>
   );
 };

@@ -142,7 +142,7 @@ const ListPage = () => {
         )}
         <div className="Right">
           <div className="MapSection">
-            <Map houses={houses} />
+            <Map houses={houses} selectedHouse={selectedHouse} />
           </div>
           <div className="Bottom">
             <div className="Region">
