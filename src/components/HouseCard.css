@@ -88,6 +88,7 @@
   color: white;
 
   padding: 4px 8px;
+  padding-bottom: 5px;
   border-radius: 999px; /* pill */
 
   font-size: 12px;
