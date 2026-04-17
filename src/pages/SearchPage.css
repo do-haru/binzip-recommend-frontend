@@ -150,19 +150,12 @@
   right: 10px;
   bottom: 10px;
 
-  font-size: 10;
+  padding: 10px 12px;
+  padding-bottom: 8px;
 
-  padding: 5px 14px;
-
-  border-radius: 20%;
+  border-radius: 100%;
   border: none;
 
-  background: #eee;
-  cursor: pointer;
-}
-
-.Input button:hover {
   background: #333;
-  color: white;
-  font-weight: bold;
+  cursor: pointer;
 }

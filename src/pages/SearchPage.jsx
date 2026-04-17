@@ -39,7 +39,7 @@ const SearchPage = () => {
   return (
     <div className="SearchPage">
       <div className="SearchContainer">
-        <div className="Title">
+        <div className="HeaderTitle">
           <div className="TitleRow1">
             <img src={logo} alt="logo" className="Logo" />
             <h1>Bee N-ZIP</h1>
@@ -115,14 +115,29 @@ const SearchPage = () => {
               className="SearchInput"
               type="text"
               value={query}
-              placeholder="20대 여자 손님이 많이 오는 카페를 지을거야. 
+              placeholder="20대 손님이 많이 오는 카페를 지을거야. 
 어떤 위치가 좋을까?"
               onChange={(e) => setQuery(e.target.value)}
               onKeyDown={(e) => {
                 if (e.key === "Enter") handleSearch();
               }}
             />
-            <button onClick={handleSearch}>검색</button>
+            <button onClick={handleSearch}>
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6.83333 12.6667V1M6.83333 1L1 6.83333M6.83333 1L12.6667 6.83333"
+                  stroke="#F5F5F5"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
           </div>
         </div>
       </div>

@@ -3,6 +3,8 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+
+  gap: 10px;
 }
 
 .Header {
@@ -12,6 +14,7 @@
 
   padding-left: 10px;
   height: 100px;
+  border-bottom: solid 1px #d9d9d9;
 }
 
 .Header h1 {
