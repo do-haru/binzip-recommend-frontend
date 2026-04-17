@@ -111,10 +111,12 @@ const SearchPage = () => {
         <div className="PurposeSelect">
           <p>어떤 목적으로 공간을 이용하실 건가요?</p>
           <div className="Input">
-            <input
+            <textarea
+              className="SearchInput"
               type="text"
               value={query}
-              placeholder="20대 여자 손님이 많이 오는 카페를 지을거야. 어떤 위치가 좋을까?"
+              placeholder="20대 여자 손님이 많이 오는 카페를 지을거야. 
+어떤 위치가 좋을까?"
               onChange={(e) => setQuery(e.target.value)}
               onKeyDown={(e) => {
                 if (e.key === "Enter") handleSearch();
