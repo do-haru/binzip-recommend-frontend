@@ -2,6 +2,26 @@ import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 import { Marker, Popup } from "react-leaflet";
 import { useEffect, useState } from "react";
 import L from "leaflet";
+import { useMap } from "react-leaflet";
+
+const MoveMap = ({ selectedHouse }) => {
+  const map = useMap();
+
+  useEffect(() => {
+    if (selectedHouse) {
+      const lat = selectedHouse.house.latitude;
+      const lng = selectedHouse.house.longitude;
+
+      // 👉 선택되면 오른쪽으로 이동
+      map.flyTo([lat, lng - 0.1], 11);
+    } else {
+      // 👉 닫히면 원래 위치로
+      map.flyTo([36.8757, 128.624], 11); // 🔥 초기 center 값
+    }
+  }, [selectedHouse]);
+
+  return null;
+};
 
 const Map = ({ houses, selectedHouse }) => {
   const [geoData, setGeoData] = useState(null);
@@ -56,11 +76,19 @@ const Map = ({ houses, selectedHouse }) => {
       center={[36.8757, 128.624]} // 영주시
       zoom={11}
       style={{ width: "100%", height: "100%" }}
+      dragging={false} // 🔥 드래그 금지
+      scrollWheelZoom={false} // 🔥 휠 줌 금지
+      doubleClickZoom={false} // 🔥 더블클릭 줌 금지
+      zoomControl={false} // 🔥 + - 버튼 제거
+      touchZoom={false} // 🔥 모바일 줌 금지
+      boxZoom={false} // 🔥 박스 줌 금지
+      keyboard={false} // 🔥 키보드 이동 금지
     >
       <TileLayer
         attribution="&copy; OpenStreetMap contributors"
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
+      <MoveMap selectedHouse={selectedHouse} />
       {geoData && (
         <GeoJSON
           data={filteredData}

@@ -3,7 +3,7 @@ import "./HouseCard.css";
 const HouseCard = ({ item, onClick, isSelected }) => {
   const { house, reasons, reasonText } = item;
 
-  const typeText = house.houseType === "단독" ? "단독 건물" : "복합 건물";
+  const typeText = house.houseType === "단독" ? "단독 주택" : "복합 건물";
 
   return (
     <div
