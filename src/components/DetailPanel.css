@@ -58,7 +58,7 @@
   color: white;
 
   padding: 4px 10px;
-  border-radius: 8px;
+  border-radius: 999px;
 
   font-size: 12px;
 }
@@ -112,6 +112,7 @@
 
 .GrayLabel {
   display: inline-block;
+  border-radius: 999px;
 }
 
 .WarningText {
