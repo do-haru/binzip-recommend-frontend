@@ -101,10 +101,19 @@ const Map = ({ houses, selectedHouse }) => {
       {geoData && (
         <GeoJSON
           data={filteredData}
-          style={{
-            color: "black",
-            weight: 2,
-            fillOpacity: 0.2,
+          style={(feature) => {
+            const regionName = feature.properties.adm_nm;
+
+            const isSelected =
+              selectedHouse &&
+              regionName.includes(selectedHouse.house.regionName);
+
+            return {
+              color: "black",
+              weight: isSelected ? 3 : 1.5,
+              fillColor: isSelected ? "#900B09" : "#ccc",
+              fillOpacity: isSelected ? 0.4 : 0.1,
+            };
           }}
         />
       )}

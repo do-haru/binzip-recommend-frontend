@@ -148,6 +148,7 @@ const SearchPage = () => {
               className="SearchInput"
               type="text"
               value={query}
+              maxLength={500}
               placeholder="20대 손님이 많이 오는 카페를 지을거야. 
 어떤 위치가 좋을까?"
               onChange={(e) => setQuery(e.target.value)}
@@ -171,6 +172,9 @@ const SearchPage = () => {
                 />
               </svg>
             </button>
+          </div>
+          <div className="CharCount">
+            <p>{query.length}/500</p>
           </div>
         </div>
       </div>

@@ -93,6 +93,16 @@
   cursor: pointer;
 }
 
+.PurposeSelect .CharCount {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.PurposeSelect .CharCount p {
+  margin: 0;
+}
+
 .CheckIcon {
   margin-right: 4px;
   font-size: 12px;

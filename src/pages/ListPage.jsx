@@ -325,12 +325,14 @@ const ListPage = () => {
                 className="SearchInput"
                 type="text"
                 value={inputValue}
+                maxLength={500}
                 placeholder="20대 손님이 많이 오는 카페를 지을거야. 어떤 위치가 좋을까?"
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={(e) => {
                   if (e.key === "Enter") handleSearch();
                 }}
               />
+
               <button onClick={handleSearch}>
                 <svg
                   width="14"
@@ -347,6 +349,9 @@ const ListPage = () => {
                   />
                 </svg>
               </button>
+            </div>
+            <div className="CharCount">
+              <p>{inputValue.length}/500</p>
             </div>
           </div>
         </div>
