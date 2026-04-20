@@ -294,3 +294,34 @@
 .TooltipWrapper:hover .Tooltip {
   opacity: 1;
 }
+
+.LoadingOverlay {
+  position: fixed; /* 🔥 화면 전체 덮기 */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  background-color: rgba(255, 255, 255, 0.7); /* 🔥 살짝 흐리게 */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 9999; /* 🔥 최상위 */
+}
+
+.Spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #ddd;
+  border-top: 5px solid black;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

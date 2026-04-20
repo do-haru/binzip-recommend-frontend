@@ -34,6 +34,8 @@ const ListPage = () => {
 
   const [selectedHouse, setSelectedHouse] = useState(null);
 
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     setInputValue(query);
     if (query && regionParam) {
@@ -42,6 +44,7 @@ const ListPage = () => {
   }, [query, regionParam]);
 
   const fetchHouses = (region, query) => {
+    setLoading(true);
     fetch(
       `http://localhost:8080/api/houses/test1?regionName=${region}&query=${query}`,
     )
@@ -49,7 +52,10 @@ const ListPage = () => {
       .then((data) => {
         setHouses(data);
       })
-      .catch(console.error);
+      .catch(console.error)
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   const handleSearch = () => {
@@ -356,6 +362,11 @@ const ListPage = () => {
           </div>
         </div>
       </div>
+      {loading && (
+        <div className="LoadingOverlay">
+          <div className="Spinner"></div>
+        </div>
+      )}
     </div>
   );
 };
