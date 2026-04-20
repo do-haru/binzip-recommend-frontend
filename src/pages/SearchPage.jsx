@@ -10,10 +10,11 @@ import { useState } from "react";
 const SearchPage = () => {
   const [regionsSelected, setRegionsSelected] = useState(
     regions.filter((r) => r !== "모두"),
-  );
-  const [query, setQuery] = useState("");
-  const navigate = useNavigate();
+  ); // 선택된 지역 상태
+  const [query, setQuery] = useState(""); // 사용자가 입력하는 검색 문장
+  const navigate = useNavigate(); // 페이지 이동 함수
 
+  // 검색 버튼 눌렀을 때 실행
   const handleSearch = () => {
     if (!query.trim()) {
       alert("검색어를 입력하세요");
@@ -40,11 +41,11 @@ const SearchPage = () => {
     <div className="SearchPage">
       <div className="SearchContainer">
         <div className="HeaderTitle">
-          <div className="TitleRow1">
+          <div className="HeaderTitleRow1">
             <img src={logo} alt="logo" className="Logo" />
             <h1>Bee N-ZIP</h1>
           </div>
-          <div className="TitleRow2">
+          <div className="HeaderTitleRow2">
             <p>조건을 연결해 </p>
             <p>최적의 공간을 찾다</p>
           </div>

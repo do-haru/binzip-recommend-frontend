@@ -12,24 +12,23 @@
   gap: 20px;
 }
 
-.Title {
+.HeaderTitle {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
 }
 
-.TitleRow1 {
+.HeaderTitleRow1 {
   display: flex;
   align-items: flex-end;
   gap: 10px;
 }
 
-.TitleRow1 img {
+.HeaderTitleRow1 img {
   width: 140px;
 }
 
-.TitleRow1 h1 {
+.HeaderTitleRow1 h1 {
   margin: 0;
   padding-bottom: 10px;
 
@@ -37,25 +36,25 @@
   font-weight: 1000;
 }
 
-.TitleRow2 {
+.HeaderTitleRow2 {
   display: flex;
   flex-direction: column;
   align-items: center;
   line-height: 1.2;
 }
 
-.TitleRow2 p {
+.HeaderTitleRow2 p {
   font-size: 28px;
   font-weight: 700;
 
   margin: 0;
 }
 
-.TitleRow2 p:first-child {
-  padding-right: 140px;
+.HeaderTitleRow2 p:first-child {
+  padding-right: 100px;
 }
 
-.TitleRow2 p:last-child {
+.HeaderTitleRow2 p:last-child {
   padding-left: 100px;
 }
 
