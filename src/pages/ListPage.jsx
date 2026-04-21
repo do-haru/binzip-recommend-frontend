@@ -38,6 +38,8 @@ const ListPage = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false); // 문의하기 버튼
 
+  const isEmpty = !inputValue.trim();
+
   useEffect(() => {
     setInputValue(query);
     if (query && regionParam) {
@@ -344,7 +346,10 @@ const ListPage = () => {
                 }}
               />
 
-              <button onClick={handleSearch}>
+              <button
+                onClick={handleSearch}
+                className={isEmpty ? "searchBtn disabled" : "searchBtn"}
+              >
                 <svg
                   width="14"
                   height="14"

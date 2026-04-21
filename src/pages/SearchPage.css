@@ -173,3 +173,12 @@
   background: #333;
   cursor: pointer;
 }
+
+.searchBtn {
+  background: black;
+  cursor: pointer;
+}
+
+.searchBtn.disabled {
+  background: #ccc;
+}

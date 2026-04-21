@@ -14,6 +14,8 @@ const SearchPage = () => {
   const [query, setQuery] = useState(""); // 사용자가 입력하는 검색 문장
   const navigate = useNavigate(); // 페이지 이동 함수
 
+  const isEmpty = !query.trim();
+
   // 검색 버튼 눌렀을 때 실행
   const handleSearch = () => {
     if (!query.trim()) {
@@ -157,7 +159,10 @@ const SearchPage = () => {
                 if (e.key === "Enter") handleSearch();
               }}
             />
-            <button onClick={handleSearch}>
+            <button
+              onClick={handleSearch}
+              className={isEmpty ? "searchBtn disabled" : "searchBtn"}
+            >
               <svg
                 width="14"
                 height="14"
