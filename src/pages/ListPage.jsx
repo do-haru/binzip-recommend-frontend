@@ -36,6 +36,8 @@ const ListPage = () => {
 
   const [loading, setLoading] = useState(false);
 
+  const [isModalOpen, setIsModalOpen] = useState(false); // 문의하기 버튼
+
   useEffect(() => {
     setInputValue(query);
     if (query && regionParam) {
@@ -104,7 +106,10 @@ const ListPage = () => {
           <h1>Bee N-ZIP</h1>
         </div>
 
-        <button className="ContactBtn">
+        <button
+          className="ContactBtn"
+          onClick={() => setIsModalOpen((prev) => !prev)}
+        >
           <svg
             width="14"
             height="14"
@@ -365,6 +370,52 @@ const ListPage = () => {
       {loading && (
         <div className="LoadingOverlay">
           <div className="Spinner"></div>
+        </div>
+      )}
+      {isModalOpen && (
+        <div className="ModalOverlay" onClick={() => setIsModalOpen(false)}>
+          <div className="ModalContent" onClick={(e) => e.stopPropagation()}>
+            <h2 className="modal-title">문의하기</h2>
+
+            <p className="modal-desc">
+              궁금하거나 원하는 정보가 있다면 무엇이든 문의해주세요
+              <br />
+              작성해주신 이메일 주소로 3영업일 이내에 답변 드릴게요
+            </p>
+
+            <label className="modal-label">답변 받을 이메일 주소</label>
+            <input className="modal-input" placeholder="beenzip@bee.com" />
+
+            <label className="modal-label">문의 내용</label>
+            <textarea
+              className="modal-textarea"
+              placeholder="문의 내용을 작성해주세요."
+            />
+
+            <div className="modal-check">
+              <input type="checkbox" defaultChecked />
+              <div>
+                <span>개인정보 수집 동의</span>
+                <br />
+                <span className="modal-link">자세히 보기</span>
+              </div>
+            </div>
+
+            <div className="ModalButtons">
+              <button
+                className="btn-cancel"
+                onClick={() => setIsModalOpen(false)}
+              >
+                닫기
+              </button>
+              <button
+                className="btn-submit"
+                onClick={() => setIsModalOpen(false)}
+              >
+                문의 전송
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>
