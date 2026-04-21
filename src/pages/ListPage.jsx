@@ -39,6 +39,7 @@ const ListPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // 문의하기 버튼
 
   const isEmpty = !inputValue.trim();
+  const [isSearched, setIsSearched] = useState(false); // 검색 완료 상태 버튼
 
   useEffect(() => {
     setInputValue(query);
@@ -55,6 +56,7 @@ const ListPage = () => {
       .then((res) => res.json())
       .then((data) => {
         setHouses(data);
+        setIsSearched(true);
       })
       .catch(console.error)
       .finally(() => {
@@ -340,7 +342,10 @@ const ListPage = () => {
                 value={inputValue}
                 maxLength={500}
                 placeholder="20대 손님이 많이 오는 카페를 지을거야. 어떤 위치가 좋을까?"
-                onChange={(e) => setInputValue(e.target.value)}
+                onChange={(e) => {
+                  setInputValue(e.target.value);
+                  setIsSearched(false);
+                }}
                 onKeyDown={(e) => {
                   if (e.key === "Enter") handleSearch();
                 }}
@@ -348,22 +353,37 @@ const ListPage = () => {
 
               <button
                 onClick={handleSearch}
+                disabled={isEmpty}
                 className={isEmpty ? "searchBtn disabled" : "searchBtn"}
               >
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 14 14"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M6.83333 12.6667V1M6.83333 1L1 6.83333M6.83333 1L12.6667 6.83333"
-                    stroke="#F5F5F5"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+                {isSearched ? (
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M16.6668 5L7.50016 14.1667L3.3335 10"
+                      stroke="#F5F5F5"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                ) : (
+                  // 🔥 기존 화살표
+                  <svg width="14" height="14" viewBox="0 0 14 14">
+                    <path
+                      d="M6.83333 12.6667V1M6.83333 1L1 6.83333M6.83333 1L12.6667 6.83333"
+                      stroke="#F5F5F5"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                )}
               </button>
             </div>
             <div className="CharCount">
